@@ -1,18 +1,16 @@
 'use client'
+
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
 
 const GuildMembersClient = () => {
-
-  const {data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/guild/members")
-    }
-  
-  })
     return (
-      <div>Guild Members Client Page role === none needed</div>
+      <div className="section-wrapper">
+        <main className="section-container">
+          <h4>Guild Member List</h4>
+          <p>Role == None Needed</p>
+        </main>
+      </div>
     )
   }
   

@@ -13,14 +13,14 @@ import { FaRegUserCircle } from "react-icons/fa";
 const Nav = () => {
   const [showDropdown, setShowDropdown] = useState(false)
 
-  
+  // const session = null;
 
   // const session = await getServerSession(options);
   const {data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/guild/members")
-    }
+    // required: true,
+    // onUnauthenticated() {
+    //   redirect("/api/auth/signin?callbackUrl=/guild/members")
+    // }
   
   })
 

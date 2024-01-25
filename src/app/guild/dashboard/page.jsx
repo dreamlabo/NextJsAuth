@@ -5,16 +5,27 @@ import { redirect } from "next/navigation";
 const GuildProtectedDashboard =  async () => {
 
   const session = await getServerSession(options);
-  console.log("Session: ", session)
+  console.log("Session: ", session);
+
   if(!session){
-    redirect("/api/auth/signin?callbackUrl=/guild/dashboard")
+      redirect("/api/auth/signin?callbackUrl=/guild/dashboard")
   }
-  if(!session?.user?.roles?.includes("admin")){
-    redirect("/denied")
+
+  if(!session?.user?.roles?.includes("guildMember")){
+      redirect("/denied")
   }
+
   console.log(session)
+  
   return (
-    <div>Guild Protected Dashboard Role==='guild member'</div>
+    <div className="section-wrapper">
+        <main className="section-container">
+          <h4>Guild Protected Dashboard</h4>
+          <p>Role must equal 'guildMember'</p>
+          <p>Logged in role: <span>{session?.user?.roles}</span></p>
+      </main>
+    </div>
+
   )
 }
 
